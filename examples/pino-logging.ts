@@ -39,3 +39,4 @@ context.run({ requestId: "req-abc-123", userId: "usr_42" }, () => {
 
 // Back outside request context
 fakePinoLog("info", "Scheduled maintenance completed");
+

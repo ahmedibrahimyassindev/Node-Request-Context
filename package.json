@@ -14,6 +14,31 @@
       "types": "./dist/src/index.d.ts",
       "import": "./dist/src/index.js",
       "default": "./dist/src/index.js"
+    },
+    "./express": {
+      "types": "./dist/src/integrations/express.d.ts",
+      "import": "./dist/src/integrations/express.js",
+      "default": "./dist/src/integrations/express.js"
+    },
+    "./fastify": {
+      "types": "./dist/src/integrations/fastify.d.ts",
+      "import": "./dist/src/integrations/fastify.js",
+      "default": "./dist/src/integrations/fastify.js"
+    },
+    "./nestjs": {
+      "types": "./dist/src/integrations/nestjs.d.ts",
+      "import": "./dist/src/integrations/nestjs.js",
+      "default": "./dist/src/integrations/nestjs.js"
+    },
+    "./logger": {
+      "types": "./dist/src/integrations/logger.d.ts",
+      "import": "./dist/src/integrations/logger.js",
+      "default": "./dist/src/integrations/logger.js"
+    },
+    "./propagation": {
+      "types": "./dist/src/propagation/headers.d.ts",
+      "import": "./dist/src/propagation/headers.js",
+      "default": "./dist/src/propagation/headers.js"
     }
   },
   "files": [
