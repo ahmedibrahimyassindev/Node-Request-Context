@@ -67,7 +67,7 @@ As new contextual fields (such as tenant IDs or trace spans) are introduced, eve
 Node Request Context encapsulates contextual state within the asynchronous execution chain:
 
 ```typescript
-import { requestContext } from "node-request-context";
+import { requestContext } from "@ahmedyassin/node-request-context";
 
 async function create(orderData: CreateOrderDto) {
     // Access context directly anywhere in the async execution chain
@@ -97,7 +97,7 @@ Each asynchronous flow maintains its own isolated context, preventing data leaks
 ## Installation
 
 ```bash
-npm install node-request-context
+npm install @ahmedyassin/node-request-context
 ```
 
 *Requires Node.js 20.0.0 or later.*
@@ -125,7 +125,7 @@ You can use the built-in default singleton or instantiate your own:
 
 ```typescript
 // Option A: Custom typed instance
-import { RequestContext } from "node-request-context";
+import { RequestContext } from "@ahmedyassin/node-request-context";
 
 export const context = new RequestContext<AppContext>();
 
@@ -181,7 +181,7 @@ Wrap your middleware stack using `context.run`:
 ```typescript
 import express from "express";
 import { randomUUID } from "node:crypto";
-import { RequestContext } from "node-request-context";
+import { RequestContext } from "@ahmedyassin/node-request-context";
 
 interface MyContext {
     requestId: string;
