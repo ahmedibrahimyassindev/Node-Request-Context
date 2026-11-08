@@ -213,20 +213,91 @@ app.listen(3000);
 
 ### Fastify Integration
 
-In Fastify, use `onRequest` hook:
+In Fastify, use `createFastifyHook`:
 
 ```typescript
 import Fastify from "fastify";
-import { randomUUID } from "node:crypto";
-import { context } from "./context";
+import { RequestContext, createFastifyHook } from "@ahmedyassin/node-request-context";
 
+const context = new RequestContext();
 const fastify = Fastify();
 
-fastify.addHook("onRequest", (request, reply, done) => {
-    const requestId = (request.headers["x-request-id"] as string) || randomUUID();
+fastify.addHook("onRequest", createFastifyHook(context));
+```
 
-    context.run({ requestId }, done);
+### NestJS Integration
+
+In NestJS, apply `createNestMiddleware` in your AppModule:
+
+```typescript
+import { Module, NestModule, MiddlewareConsumer } from "@nestjs/common";
+import { RequestContext, createNestMiddleware } from "@ahmedyassin/node-request-context";
+
+export const context = new RequestContext();
+
+@Module({})
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(createNestMiddleware(context))
+      .forRoutes("*");
+  }
+}
+```
+
+---
+
+## Structured Logging Integrations
+
+Automatically inject `requestId` and context metadata into your logs without manual parameter passing:
+
+### Pino Logger
+
+```typescript
+import pino from "pino";
+import { context } from "./context";
+import { createPinoMixin } from "@ahmedyassin/node-request-context/logger";
+
+const logger = pino({
+  mixin: createPinoMixin(context, {
+    keys: ["requestId", "userId"] // only attach non-sensitive keys
+  })
 });
+
+// Logs emitted anywhere inside request context will now include:
+// {"level":30,"time":1670000000000,"msg":"User checkout","requestId":"...","userId":"..."}
+logger.info("User checkout");
+```
+
+### Winston Logger
+
+```typescript
+import winston from "winston";
+import { context } from "./context";
+import { createWinstonFormat } from "@ahmedyassin/node-request-context/logger";
+
+const logger = winston.createLogger({
+  format: winston.format.combine(
+    createWinstonFormat(context)(),
+    winston.format.json()
+  ),
+  transports: [new winston.transports.Console()]
+});
+```
+
+---
+
+## Subpath Imports
+
+For optimal bundle size and tree-shaking, subpath imports are available:
+
+```typescript
+import { RequestContext } from "@ahmedyassin/node-request-context";
+import { createExpressMiddleware } from "@ahmedyassin/node-request-context/express";
+import { createFastifyHook } from "@ahmedyassin/node-request-context/fastify";
+import { createNestMiddleware } from "@ahmedyassin/node-request-context/nestjs";
+import { createPinoMixin, createWinstonFormat } from "@ahmedyassin/node-request-context/logger";
+import { injectContextHeaders, extractContextFromHeaders } from "@ahmedyassin/node-request-context/propagation";
 ```
 
 ---
