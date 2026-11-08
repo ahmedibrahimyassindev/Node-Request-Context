@@ -32,3 +32,4 @@ context.run({ requestId: "req-winston-777", correlationId: "corr-888" }, () => {
   fakeWinstonLog("info", "User accessed protected endpoint");
   fakeWinstonLog("error", "Database connection timeout");
 });
+

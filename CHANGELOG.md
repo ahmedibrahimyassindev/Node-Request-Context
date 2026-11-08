@@ -33,3 +33,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **CI/CD:**
   - GitHub Actions matrix testing on Node 20.x, 22.x, and 24.x across Ubuntu and Windows.
   - Automated npm release workflow with provenance.
+
