@@ -2,24 +2,19 @@
   "name": "node-request-context",
   "version": "1.0.0",
   "description": "A lightweight, framework-agnostic request context manager for Node.js powered by AsyncLocalStorage",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "dist/src/index.js",
+  "module": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "type": "module",
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.cjs"
-      }
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js",
+      "default": "./dist/src/index.js"
     }
   },
   "files": [
-    "dist",
+    "dist/src",
     "README.md",
     "LICENSE"
   ],
