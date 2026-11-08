@@ -1,0 +1,61 @@
+{
+  "name": "node-request-context",
+  "version": "1.0.0",
+  "description": "A lightweight, framework-agnostic request context manager for Node.js powered by AsyncLocalStorage",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test dist/tests/*.test.js",
+    "test:src": "node --test tests/*.test.ts",
+    "prepare": "npm.cmd run build"
+  },
+  "keywords": [
+    "request-context",
+    "async-local-storage",
+    "correlation-id",
+    "request-id",
+    "cls",
+    "tracing",
+    "express",
+    "fastify",
+    "nestjs"
+  ],
+  "author": "Ahmed Ibrahim Yassin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmedibrahimyassindev/Node-Request-Context.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ahmedibrahimyassindev/Node-Request-Context/issues"
+  },
+  "homepage": "https://github.com/ahmedibrahimyassindev/Node-Request-Context#readme",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  }
+}
+
