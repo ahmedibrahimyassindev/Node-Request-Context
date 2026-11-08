@@ -25,3 +25,4 @@ describe("Performance & Benchmark", () => {
     console.log(`       ⚡ Benchmark throughput: ${opsPerSec.toLocaleString()} ops/sec (${iterations} cycles in ${durationMs.toFixed(2)}ms)`);
   });
 });
+
