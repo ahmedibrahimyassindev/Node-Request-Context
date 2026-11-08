@@ -1,5 +1,6 @@
 # Node Request Context
 
+[![npm version](https://img.shields.io/npm/v/@ahmedyassin/node-request-context.svg)](https://www.npmjs.com/package/@ahmedyassin/node-request-context)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Node Version](https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen.svg)](https://nodejs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org)
